@@ -1,6 +1,6 @@
 export const SUCCESSResponse = ({isSuccess, code, message}, result) => {
     return {
-         isSuccess: isSuccess,
+         isSuccess: isSuccess, //
          code: code,
          message: message,
          result: result
