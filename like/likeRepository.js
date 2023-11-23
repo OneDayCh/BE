@@ -10,7 +10,7 @@ export const selectUserLikeStoreList = async(userId, connection) =>{
 export const postUserLikeStoreList = async(userId, shopId, connection) =>{
 
     const selectUserLikeStoreListQuery = `insert into likes(shop_id, user_id) values(${shopId}, ${userId});`;
-    const [selectReservationListResult] = connection.query(selectUserLikeStoreListQuery);
+    const [selectReservationListResult] = await connection.query(selectUserLikeStoreListQuery);
 
     return selectReservationListResult;
 
@@ -19,7 +19,7 @@ export const postUserLikeStoreList = async(userId, shopId, connection) =>{
 export const deleteUserLikeStoreList = async(userId, shopId, connection) =>{
 
     const deleteUserLikeStoreListQuery = `delete from likes where shop_id = ${shopId} and user_id = ${userId}; `;
-    const [deleteReservationListResult] = connection.query(deleteUserLikeStoreListQuery);
+    const [deleteReservationListResult] = await connection.query(deleteUserLikeStoreListQuery);
 
     return deleteReservationListResult;
 
@@ -28,7 +28,7 @@ export const deleteUserLikeStoreList = async(userId, shopId, connection) =>{
 export const plusLikeCount = async(shopId, connection)=>{
 
     const plusLikeCountQuery = `update shop set like_count = like_count+ 1 where id = ${shopId};`;
-    const [plusLikeCountResult] = connection.query(plusLikeCountQuery);
+    const [plusLikeCountResult] = await connection.query(plusLikeCountQuery);
 
     return true;
 
@@ -37,7 +37,7 @@ export const plusLikeCount = async(shopId, connection)=>{
 export const subLikeCount = async(shopId, connection)=>{
 
     const subLikeCountQuery = `update shop set like_count = like_count- 1 where id = ${shopId};`;
-    const [plusLikeCountResult] = connection.query(subLikeCountQuery);
+    const [plusLikeCountResult] = await connection.query(subLikeCountQuery);
 
     return true;
 

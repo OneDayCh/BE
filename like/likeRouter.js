@@ -1,5 +1,5 @@
 import express from 'express';
-import {getUserLikeStore} from "./likeController"
+import {getUserLikeStore,postUserLikeStore,deleteUserLikeStore} from "./likeController"
 
 const likeRouter = express.Router();
 
@@ -7,6 +7,9 @@ const likeRouter = express.Router();
 //userRouter.delete('/:userId', deleteUser);
 //userRouter.get('/:userId', getUserInfo);
 likeRouter.get('/:userId', getUserLikeStore);
+likeRouter.post('/',postUserLikeStore);
+likeRouter.put('/',deleteUserLikeStore);
+
 
 export default likeRouter;
 
