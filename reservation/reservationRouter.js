@@ -8,7 +8,7 @@ const reservationRouter = express.Router();
 //userRouter.get('/:userId', getUserInfo);
 reservationRouter.post('/', postReservation);
 reservationRouter.get('/',getReservationList);
-reservationRouter.get('/',getUserReservationList);
+reservationRouter.get('/:userId',getUserReservationList);
 export default reservationRouter;
 
 //필요한 파라미터 : time, date, shop_id, user_id
