@@ -7,7 +7,7 @@ const reservationRouter = express.Router();
 //userRouter.delete('/:userId', deleteUser);
 //userRouter.get('/:userId', getUserInfo);
 reservationRouter.post('/', postReservation);
-reservationRouter.get('/',getReservationList);
+reservationRouter.get('/:date/:shopId',getReservationList);
 reservationRouter.get('/:userId',getUserReservationList);
 export default reservationRouter;
 

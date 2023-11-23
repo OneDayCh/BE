@@ -16,3 +16,13 @@ export const  selectUserReservationList = async(userId, connection) =>{
 
 
 }
+
+export const selectReservationList = async(findReservationListParams, connection) =>{
+
+    const selectUserReservationListQuery = `select * from operationTime where shop_id = ? and date = ?;`;
+    const [selectUserReservationListResult] = await connection.query(selectUserReservationListQuery,findReservationListParams);
+    
+    console.log(selectUserReservationListResult)
+    return selectUserReservationListResult ;
+
+}
