@@ -14,7 +14,7 @@ export const  getUserLikeStore= async (req, res) => {
 
     const getUserLikeStoreResult = await findUserLikeStore(userId);
 
-    if(getUserLikeStoreResult == null || getUserLikeStoreResult == false){
+    if(getUserLikeStoreResult === null || getUserLikeStoreResult === false){
         return res.send(errResponse(baseResponse.SERVER_ERROR));
     }
 
