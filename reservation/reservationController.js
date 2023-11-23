@@ -3,7 +3,7 @@ import {} from './reservationProvider';
 import baseResponse from '../config/baseResponse';
 import { errResponse, SUCCESSResponse } from '../config/response';
 import {createReservation} from "./reservationService";
-import {findUserReservationList} from "./reservationProvider";
+import {findUserReservationList, findReservationList} from "./reservationProvider";
 
 /*
 API : [POST]새로운 예약을 추가한다.
@@ -60,7 +60,18 @@ API : [GET] 해당 가게의 특정 날짜의 운영 시간 목록들을 가지�
 export const getReservationList = async(req,res) =>{
 
     //필요한 파라미터: date, shop_id
+    const date = req.params.date;
+    const shopId = req.params.shopId;
 
-    //응답 형식: time, reservation_check, date, user_id
+    console.log(date);
+    console.log(shopId);
+
+    const getReservationListResult = await findReservationList(shopId,date);
+
+    if(getReservationListResult == false){
+        return res.send(errResponse(baseResponse.SERVER_ERROR));
+    }
+
+    return res.send(SUCCESSResponse(baseResponse.SUCCESS,getReservationListResult));
 
 }
