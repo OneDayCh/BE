@@ -13,9 +13,6 @@ export const findUserLikeStore = async(userId) =>{
 
         const connection = await pool.getConnection(async(conn)=> conn);
         const findUserLikeStoreResult = await selectUserLikeStoreList(userId, connection);
-        if(findUserLikeStoreResult  == false ){
-            return errResponse(baseResponse.DB_ERROR);
-        }
         
         connection.release();
 
