@@ -6,3 +6,13 @@ export const insertReservation = async(createReservationParams, connection)=>{
     return true;
 }
 
+export const  selectUserReservationList = async(userId, connection) =>{
+
+    const selectUserReservationListQuery = `select * from operationTime where user_id = ${userId};`;
+    const [selectUserReservationListResult] = await connection.query(selectUserReservationListQuery);
+    
+    console.log(selectUserReservationListResult)
+    return selectUserReservationListResult ;
+
+
+}

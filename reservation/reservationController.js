@@ -3,6 +3,7 @@ import {} from './reservationProvider';
 import baseResponse from '../config/baseResponse';
 import { errResponse, SUCCESSResponse } from '../config/response';
 import {createReservation} from "./reservationService";
+import {findUserReservationList} from "./reservationProvider";
 
 /*
 API : [POST]새로운 예약을 추가한다.
@@ -38,9 +39,17 @@ API : [GET] 사용자의 예약 완료된 항목 list를 가지고 온다.
 
 export const  getUserReservationList= async (req, res) => {
 
-    const userId = req.body.query;
+    const userId = req.params.userId;
     //필요한 파리미터: user_id
 
+    console.log(userId);
+    const getUserReservationListResult = await findUserReservationList(userId);
+
+    if(getUserReservationListResult == false){
+        return res.send(errResponse(baseResponse.SERVER_ERROR));
+    }
+
+    return res.send(SUCCESSResponse(baseResponse.SUCCESS,getUserReservationListResult));
     //응답 형식: user_id, reservation_check, shop_id, time, date
 };
 
